@@ -8,7 +8,7 @@ st.set_page_config(layout="wide", initial_sidebar_state="auto")
 col1, col2 = st.columns(2, gap="medium")
 
 
-image = Image.open("images/photo.jpg")
+image = Image.open("images/photo.JPG")
 rotated_img = image.rotate(0)
 fig = plt.figure()
 plt.imshow(rotated_img)
