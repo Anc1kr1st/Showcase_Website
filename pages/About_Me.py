@@ -1,22 +1,11 @@
 import streamlit as st
-from PIL import Image
-import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide", initial_sidebar_state="auto")
 
 col1, col2 = st.columns(2, gap="medium")
 
-
-# image = Image.open("images/photo.JPG")
-# rotated_img = image.rotate(0)
-# fig = plt.figure()
-# plt.imshow(rotated_img)
-# plt.axis("off")
-
-
 with col1:
     st.image("images/photo.JPG")
-    # st.pyplot(fig, use_container_width=False)
 
 with col2:
     st.title("Richard Bajan")
