@@ -1,40 +1,35 @@
 import streamlit as st
-import pandas
 
-st.set_page_config(layout="wide")
+# --- PAGE SETUP ---
+about_page = st.Page(
+    page="pages/About_Me.py",
+    title="About Me",
+    default=True,
+)
 
-col1, col2 = st.columns(2)
+python_page = st.Page(
+    page="pages/Python_Portfolio.py",
+    title="Python Portfolio",
+)
 
-with col1:
-    st.image("images/photo.png")
+cpp_page = st.Page(
+    page="pages/CPP_Portfolio.py",
+    title="C++ Portfolio",
+)
 
-with col2:
-    st.title("Richard Bajan")
-    content = """
-    Hi, I am Richard! I am..
-    """
-    st.info(content)
+contact_page = st.Page(
+    page="pages/Contact_Us.py",
+    title="Contact Me",
+)
 
-content2 = """
-Below you can find some of the apps I have built in Python. Feel free to contact me!
-"""
-st.write(content2)
+# --- NAVIGATION SETUP [WITH SECTIONS]  ---
+pg = st.navigation(
+    {
+        "Info": [about_page],
+        "Projects": [python_page, cpp_page],
+        "Contact": [contact_page]
+    }
+    )
 
-col3, empty_col, col4 = st.columns([1.5, 0.5, 1.5])
-
-df = pandas.read_csv("data.csv", sep=";")
-
-with col3:
-    for index, row in df[:10].iterrows():
-        st.header(row["title"])
-        st.write(row["description"])
-        st.image("images/" + row["image"])
-        st.write(f"[Source Code]({row['url']})")
-
-
-with col4:
-    for index, row in df[10:].iterrows():
-        st.header(row["title"])
-        st.write(row["description"])
-        st.image("images/" + row["image"])
-        st.write(f"[Source Code]({row['url']})")
+# --- RUN NAVIGATION  ---
+pg.run()
